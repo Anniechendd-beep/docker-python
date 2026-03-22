@@ -4,3 +4,4 @@
 - MySQL
 - Python
 - Node.JS
+- Other CLI tools
