@@ -26,6 +26,6 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
-WORKDIR /app
+WORKDIR /src
 
-CMD ["bash"]
+CMD ["tail", "-f", "/dev/null"]

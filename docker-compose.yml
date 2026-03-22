@@ -3,7 +3,7 @@ services:
     build: .
     container_name: pydev
     volumes:
-      - .:/app
+      - /D/work/src:/src
     environment:
       - DB_HOST=db
     depends_on:
