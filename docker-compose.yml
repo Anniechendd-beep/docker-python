@@ -1,6 +1,7 @@
 services:
   app:
     build: .
+    container_name: pydev
     volumes:
       - .:/app
     environment:
@@ -12,6 +13,7 @@ services:
 
   db:
     image: mysql:8.0
+    container_name: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: abc123

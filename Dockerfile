@@ -4,6 +4,10 @@ FROM ubuntu:22.04
 # 避免交互式安装时的提示
 ENV DEBIAN_FRONTEND=noninteractive
 
+# 使用官方 Ubuntu 源
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+    sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+
 # 安装基础依赖、Python、Node.js 和常用工具
 RUN apt-get update && apt-get install -y \
     curl \
