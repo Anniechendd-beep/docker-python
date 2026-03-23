@@ -3,13 +3,14 @@ services:
     build: .
     container_name: pydev
     volumes:
-      - /D/work/src:/src
+      - ./src:/src
     environment:
       - DB_HOST=db
     depends_on:
       - db
     ports:
-      - "8000:8000"
+      - "80:8000"
+    command: python3 /src/index.py
 
   db:
     image: mysql:8.0
@@ -21,14 +22,17 @@ services:
     ports:
       - "3306:3306"
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
     restart: unless-stopped
     ports:
-      - "0.0.0.0:80:80"
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: abc123
+      PMA_ARBITRARY: 1
     depends_on:
-      - app
-    volumes:
-      - /D/work/web/conf.d/:/etc/nginx/conf.d/
-      - /D/work/web:/web
+      - db

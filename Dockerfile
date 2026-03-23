@@ -25,6 +25,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# 安装 Python 包
+RUN python3 -m pip install flask pymysql
+
 # 设置工作目录
 WORKDIR /src
 
